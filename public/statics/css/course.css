@@ -1,0 +1,28 @@
+
+.course-main-img{
+    width: 300px;
+}
+
+
+.text-right{
+    text-align: right !important;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+.title-container{
+    background-color: #e0e2f3;
+    
+}
+
+.teacher{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.formbox{
+    width: 90%;
+}

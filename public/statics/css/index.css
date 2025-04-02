@@ -1,0 +1,107 @@
+/* ---- FONTS ----*/
+@font-face {
+    font-family: "vazir";
+    src: url("../fonts/vazir.ttf");
+}
+/* ---- ALL ELEMENTS ----*/
+*{
+    text-align: right !important;
+    direction: rtl !important;
+    font-family: 'vazir' !important;
+}
+
+.text-justified{
+    text-align: justify !important;
+}
+
+.text-right{
+    text-align: right !important;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+.dir-rtl{
+    direction: rtl !important;
+}
+
+.dir-ltr{
+    direction: ltr !important;
+}
+
+/* ----NAVBAR PART ----*/
+.logo-top{
+    width: 70px;
+}
+
+/* ---- BACKGROUND-COLOR ----*/
+body{
+    background-color: white;
+}
+
+/* ---- NEWS PART ----*/
+.last-news{
+    width: 100%;
+}
+
+.recent-news{
+    width: 190px;
+}
+
+.titr-bar{
+    background: linear-gradient(to right, white, #2635d9);
+    font-weight: bold;
+}
+
+
+/* ---- COURSE PART ----*/
+.img-part{
+    width: 400px;
+}
+
+.course-banner{
+    width: 200px;
+}
+
+.course-box{
+    width: fit-content;
+}
+
+
+/** ---- SLIDER/SWAPPER ----*/
+.carousel{
+    height: 500px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-img{
+    height: 500px !important;
+}
+
+.carousel-item{
+    vertical-align: middle !important;
+}
+
+/* ---- CONTACT US PART ----*/
+.footer{
+    border-top: 2px #2635d9 solid;
+}
+.contact-us{
+    width: 40px;
+}
+
+li{
+    line-height: 50px !important;
+}
+
+li > a{
+    text-decoration: none !important;
+}
+
+.copyright{
+    border-top: 2px #2635d9 solid;
+}
+
