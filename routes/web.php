@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseRegistrationController;
+use App\Http\Controllers\HomeController;
 
 /** ====================HOME ROUTE==================== */
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [HomeController::class, "index"]);
+
 
 
 /** ====================NEWS ROUTE==================== */
@@ -22,6 +22,6 @@ Route::prefix('courses')->group(function(){
         return view("courses/index");
     });
 
-    Route::get("/registrationForm/{course_code}", function(){return view("courses/reg");});
+    Route::get("/registrationForm/{course_code}", [CourseRegistrationController::class, "showCoursInfo"]);
     Route::post("/registration/{course_code}", [CourseRegistrationController::class, "register"]);
 });

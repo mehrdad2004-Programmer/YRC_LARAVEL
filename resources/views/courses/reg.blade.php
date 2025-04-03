@@ -50,6 +50,23 @@
             <img src={{ asset("statics/img/wave.svg") }}>
         </div>
     </div>
+    @if($statuscode === 201)
+        <div class="alert container mt-3 alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            عملیات با موقیت انجام شد . 
+            <span>کد رهگیری : </span> <span><b><u>{{ $tr_code }}</u></b></span>
+        </div>
+    @elseif($statuscode == 400)
+        <div class="alert container mt-3 alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            خطا در عملیات، مجدد تلاش کنید
+        </div>
+    @elseif($statuscode == 500)
+        <div class="alert container mt-3 alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                خطا در پردازش سرور، منتظر بررسی کارشناسان
+        </div>
+    @endif
     <div class="container">
         <div class="container">
             دانشجوی گرامی، لطفا جهت ادامه فرایند، فرم ذیل را تکمیل نمایید
@@ -71,16 +88,20 @@
                 <th scope="col">عنوان دوره</th>
                 <th scope="col">مدت زمان (ساعت)</th>
                 <th scope="col">مدرس</th>
+                <th scope="col">تاریخ برگزاری</th>
                 <th scope="col">قیمت (ریال)</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>آموزش پایتون مقدماتی</td>
-                <td>30</td>
-                <td>مهرداد کلاته عربی</td>
-                <td>3,000,000</td>
-              </tr>
+                @foreach($data as $item)
+                    <tr>
+                        <td>{{ $item['title'] }}</td>
+                        <td>{{ $item['duration'] }}</td>
+                        <td>{{ $item['teacher'] }}</td>
+                        <td>{{ $item['start_date'] }}</td>
+                        <td>{{ $item['amount'] }}</td>
+                    </tr>
+                @endforeach
             </tbody>
           </table>
     </div>

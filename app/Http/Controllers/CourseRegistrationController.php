@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CourseRegistrationModel;
+use App\Models\Courses;
 use Illuminate\Support\Facades\DB;
 
 class CourseRegistrationController extends Controller
@@ -32,14 +33,53 @@ class CourseRegistrationController extends Controller
 
             if($res){
                 DB::commit();
-                return view("courses/reg");
+                return response()
+                ->view("courses.reg", [
+                    "msg" => "با موفقیت اضافه شد",
+                    "tr_code" => $tr_code,
+                    "statuscode" => 201
+                ])
+                ->setStatusCode(201);
+            
             }
             DB::rollBack();
-
+            return response()
+            ->view("courses.reg", [
+                "msg" => "خطا در پردازش ، مجدد تلاش کنید",
+                "statuscode" => 400
+            ])
+            ->setStatusCode(400);
             
         }catch(\Exception $e){
             DB::rollBack();
-            return view("courses/reg")->with("error", $e->getMessage());
+            return response()
+            ->view("courses.reg", [
+                "msg" => "خطا در پردازش سرور، در انتظار بررسی کارشناسان",
+                "statuscode" => 500
+            ])
+            ->setStatusCode(500);
+        }
+    }
+
+    public function showCoursInfo($course_code){
+        $data = Courses::where("course_code", $course_code)->get();
+        if($data->isEmpty()){
+            abort(404);
+        }
+        try{
+            return response()
+            ->view("courses.reg", [
+                "data" => $data,
+                "statuscode" => 200
+            ])
+            ->setStatusCode(200);
+        }catch(\Exception $e){
+            return response()
+            ->view("courses.reg", [
+                "msg" => "خطا در پردازش سرور، در انتظار بررسی کارشناسان" .  $e->getMessage(),
+                "statuscode" => 500
+            ])
+            ->setStatusCode(500);
         }
     }
 }
